@@ -1,0 +1,229 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<h6>Confirmation</h6>
+<h1>Registration Page</h1>
+<head>
+    <script>
+        function signupform()
+{
+    var uname = document.getElementById("username");
+    var user_name = uname.value;
+    var pass = document.getElementById("psw");
+    var cpass = document.getElementById("cpsw");
+    var email = document.getElementById("Email");
+    var mobno = document.getElementById("Mob");
+    var fname = document.getElementById("fname");
+    var lname = document.getElementById("lname");
+    var checkname=/^[A-Za-z]+$/;
+
+
+    if(user_name === "" )
+    {
+        alert("please enter username");
+        return false;
+    }
+    if (user_name.length < 2 || user_name.length > 25) {
+        alert("Please enter greater than 2 and less than 25");
+        return false;
+    }
+    if(pass.value === "" )
+    {
+        alert("please enter password");
+        return false;
+    }
+    // if  (!pass.value.match(passw))
+    //{
+    //    alert("Please put valid password:\n at least 8 character \n at least 1 numeric character \n at least 1 lowercase letter \n at least 1 uppercase letter \n at least 1 special character");
+    //    return false;
+    //}
+     if (cpass.value != pass.value)
+    {
+        alert("Please enter same password ");
+        return false;
+    }
+    if(email.value === "")
+    {
+        alert("Please enter email-id");
+        return false;
+    }
+    //if(!email.value.match(mailformat))
+    //{
+    //    alert("InValid email address!");
+    //    return false;
+    //}
+    if (mobno.value.length!=10)
+    {
+        alert("Please enter 10 digit number");
+        return false;
+    }
+    if (fname.value == "" ) {
+        alert('Please enter first name');
+        return false;
+    } 
+    if (fname.value.length < 2 || fname.value.length > 25) {
+        alert("Please enter greater than 2 and less than 25");
+        return false;
+    }
+    if (!fname.value.match(checkname)) {
+        alert("Name must be in alphabets");
+        return false;
+    }
+    if (lname.value == "") {
+        alert('Please enter  last name');
+        return false;
+    }
+   
+    if (lname.value.length < 2 || lname.value.length > 25) {
+        alert("Please enter greater than 2 and less than 25");
+        return false;
+    }
+
+    if (!lname.value.match(checkname)) {
+        alert("Name must be in alphabets");
+        return false;
+    }
+
+    else{
+        alert("form submitted successfully");
+        return true;
+    }
+
+
+}
+    </script>
+    <style>
+   /* body {
+    background-color: rgb(244, 159, 159);
+} */
+
+.container1 {
+    background-color: rgb(244, 159, 159);
+    
+    margin: 400px 200px;
+    padding-bottom: 2rem;
+    margin-top: 180px;
+}
+
+.title {
+    text-align: center;
+    background-color: rgb(115, 109, 109);
+    padding: 10px;
+    
+}
+.ew{
+    color: white;
+}
+
+.main {
+    margin: 0 50px;
+    line-height: 1.9rem;
+}
+
+.user {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.name {
+    display: flex;
+    justify-content: space-around;
+}
+
+.pass {
+    display: flex;
+    justify-content: space-around;
+}
+
+.mail_mob {
+    margin-left: 70px;
+}
+
+.user_name {
+    margin-left: 70px;
+
+}
+
+ .btn{
+    width: 150px;
+    height: 2rem;
+    padding: 5px;
+    border-radius:50px;
+    cursor: pointer;
+
+} 
+.ghe{
+    margin-top: 30px;
+    text-align: center;
+}
+.btn:hover{
+    background-color: rgb(251, 182, 53);
+    
+    
+    
+}
+    </style>
+    </head>
+   
+<body>
+    <form name="myform" onsubmit="return signupform()" action="login.html">
+        <div class="container1">
+            <div class="title">
+                <h1 class="ew">Create An Account</h1>
+            </div>
+            <div class="main">
+                <div class="user_name">
+                    <label for="username" class="user"><b>Username</b></label>
+                    <input type="text" placeholder="Enter Username" name="username" id="username" >
+                </div>
+
+                <div class="pass">
+                    <div class="pass1">
+                        <label for="psw" class="user"><b>Password</b></label>
+                        <input type="password" placeholder="Enter Password" name="psw" id="psw" >
+                    </div>
+                    <div class="confir">
+                        <label for="cpsw" class="user"><b> Confirm Password</b></label>
+                        <input type="password" placeholder="Enter  Confirm Password" name="cpsw" id="cpsw"
+                            >
+                    </div>
+                </div>
+
+                <div class="mail_mob">
+                    <div class="mail">
+                        <label for="Email" class="user"><b>Email</b></label>
+                        <input type="email" placeholder="Enter Email" name="Email" id="Email" >
+                    </div>
+                    <div class="mob">
+                        <label for="Mob" class="user"><b>Mobile no.</b></label>
+                        <input type="text" placeholder="Enter Mobile no." name="Mob" id="Mob" >
+                    </div>
+                </div>
+
+                <div class="name">
+                    <div class="namef">
+                        <label for="fname" class="user"><b>First Name</b></label>
+                        <input type="text" placeholder="Enter Firstname" name="fname" id="fname" >
+                    </div>
+
+                    <div class="namel">
+                        <label for="lname" class="user"><b>Last Name</b></label>
+                        <input type="text" placeholder="Enter Lastname" name="lname" id="lname" >
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="ghe">
+            <button type="submit" class="btn"><b>Register</b></button></div>
+        </div>
+        <br />
+        <br />
+        
+   
+        
+             </form>
+</body>
+
