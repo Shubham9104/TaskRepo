@@ -1,0 +1,77 @@
+﻿@model IEnumerable<Restaurant.web.Models.FoodCategory>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<head>
+    <link rel="stylesheet" href="~/css/Index.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap_rest.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body style="background-image:url(https://i.pinimg.com/originals/65/f7/66/65f766137dbbfa122d51e7a452d12b62.jpg);">
+
+    <nav>
+        <ul class="nav-flex-row">
+            <li class="nav-item">
+                 <a class="dropdown-item"
+                <a class="nav-link text-dark" asp-area="" asp-page="/Index" style="color:#EC4E20">Home</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="dropdown-item"
+                   asp-area="Food" asp-controller="FoodCategories" asp-action="Index" style="color:#EC4E20">
+                    Category
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="dropdown-item"
+                   asp-area="Food" asp-controller="Orders" asp-action="Index" style="color:#EC4E20">
+                    Orders
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="dropdown-item"
+                   asp-area="Food" asp-controller="Foodmenus" asp-action="Index" style="color:#EC4E20">
+                    Menu
+                </a>
+            </li>
+            <li class="nav-item">
+                 <a class="dropdown-item"
+                <a href="#shop" style="color:#EC4E20">Online Booking</a>
+            </li>
+        </ul>
+    </nav><br <br/>
+    <br/>
+     <br/>
+
+<h3>Category</h3>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr style="background-color:#7D7ABC">
+            <th>
+                @Html.DisplayNameFor(model => model.FoodcategoryName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+       <tr style="background-color:#FFE8D4">
+            <td>
+                @Html.DisplayFor(modelItem => item.FoodcategoryName)
+            </td>
+            <td>
+                <a asp-action="Edit"  asp-route-id="@item.FoodcategoryId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.FoodcategoryId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.FoodcategoryId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+</body>

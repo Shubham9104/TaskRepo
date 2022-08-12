@@ -1,0 +1,144 @@
+﻿@model IEnumerable<Restaurant.web.Model.Foodmenu>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<head>
+    <link rel="stylesheet" href="~/css/Index.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap_rest.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body style="background-image:url(https://i.pinimg.com/originals/65/f7/66/65f766137dbbfa122d51e7a452d12b62.jpg);">
+
+ 
+     <nav>
+        <ul class="nav-flex-row">
+            <li class="nav-item">
+                 <a class="dropdown-item"
+                <a class="nav-link text-dark" asp-area="" asp-page="/Index" style="color:#FF1818">Home</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="dropdown-item"
+                   asp-area="Food" asp-controller="FoodCategories" asp-action="Index" style="color:#FF1818">
+                    Category
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="dropdown-item"
+                   asp-area="Food" asp-controller="Orders" asp-action="Index" style="color:#FF1818">
+                    Orders
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="dropdown-item"
+                   asp-area="Food" asp-controller="Foodmenus" asp-action="Index" style="color:#FF1818">
+                    Menu
+                </a>
+            </li>
+            <li class="nav-item">
+                 <a class="dropdown-item"
+                 href="#shop" style="color:#FF1818">Online Booking</a>
+            </li>
+        </ul>
+    </nav><br/> <br/>
+    <br/>
+     <br/>
+
+<h3>Menu</h3>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+@*<table class="table">
+    <thead>
+        <tr style="background-color:#9C9990">
+            <th>
+                @Html.DisplayNameFor(model => model.FoodName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FoodCategory)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Quantity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Confirmed)
+            </th>
+             <th>
+                @Html.DisplayNameFor(model => model.ImageUrl)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>*@
+@foreach (var item in Model) {
+    <div class="card text-center  bg-dark" style="width:16.2rem;float:left;overflow:hidden;margin:1rem;color:white">
+       
+        <img class="card-img-top" src="@item.ImageUrl" alt="@item.FoodName" style="width:17rem;height:14rem;">
+       
+            <h4 class="card-title font-italic font-weight-normal" style="background-color:#CCA43B">
+                @item.FoodName
+                </h4>
+            <div class="row">
+                <div class="col card-text">
+                    @Html.DisplayNameFor(modelItem => item.Confirmed)
+                </div>
+                <div class="col card-text">
+                    @Html.DisplayFor(modelItem => item.Confirmed)
+                </div>
+            </div>
+           @*<div class="row">
+                <div class="col card-text">
+                    @Html.DisplayNameFor(modelItem => item.Quantity)
+                </div>
+                <div class="col card-text">
+                    @Html.DisplayFor(modelItem => item.Quantity)
+                </div>
+            </div>*@ 
+
+            <div class="row">
+                <div class="col card-text" > 
+                    @Html.DisplayFor(modelItem => item.FoodCategory.FoodcategoryName)
+                </div>
+               
+            </div>
+           
+            <a asp-area="Food" asp-controller ="Orders" asp-action="Create"class="btn btn-primary" style="background-color:#9C3848">Order Now</a>
+        <div class="card-footer">
+            <a asp-action="Edit" asp-route-id="@item.FoodId" style="background-color:#F26419" class="btn btn-dark">Edit</a>
+@*           <a asp-action="Details" asp-route-id="@item.DishId" class="btn btn-dark">Details</a>
+*@          <a asp-action="Delete" asp-route-id="@item.FoodId" style="background-color:#0E34A0" class="btn btn-dark">Delete</a>
+             
+
+        </div>
+               
+           
+    </div>
+        @*<tr style="background-color:#CDD1C4">
+            <td>
+                @Html.DisplayFor(modelItem => item.FoodName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FoodCategory.FoodcategoryName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Confirmed)
+            </td>
+             <td>
+                @Html.DisplayFor(modelItem => item.ImageUrl)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.FoodId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.FoodId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.FoodId">Delete</a>
+            </td>
+        </tr>
+
+    </tbody>
+</table>*@
+}
+</body>
